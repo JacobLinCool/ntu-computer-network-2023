@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": true,
+    "[c]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "files.associations": {
+        "*.h": "c"
+    }
+}
