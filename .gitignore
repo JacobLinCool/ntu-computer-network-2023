@@ -51,7 +51,11 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+.pnpm-store
+
 .DS_Store
 
 /server
 test/*.test
+
+chat-client/chat-client

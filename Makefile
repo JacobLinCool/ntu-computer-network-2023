@@ -26,4 +26,7 @@ test: $(patsubst test/%.test.c,test/%.test,$(wildcard test/*.test.c))
 test/%.test: test/%.test.c $(OBJECTS)
 	$(CC) $(CFLAGS) -MMD $< $(filter-out src/main.o,$(OBJECTS)) -o $@
 
+chat-client: src/chat-client.c
+	$(CC) $(CFLAGS) $< -o $@
+
 .PHONY: all clean test

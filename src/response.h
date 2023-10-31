@@ -11,6 +11,7 @@ typedef struct Response {
     int32_t         status;
     struct Headers* headers;
     char*           body;
+    FILE*           body_stream;
 } Response;
 
 struct Response* response_create();

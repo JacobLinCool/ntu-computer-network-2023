@@ -2,8 +2,10 @@
 #define _GUARD_HEADER_SERVER
 
 #include <arpa/inet.h>
+#include <errno.h>
 #include <inttypes.h>
 #include <netinet/in.h>
+#include <pthread.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -14,6 +16,7 @@
 #include <unistd.h>
 
 #include "middleware.h"
+#include "pool.h"
 
 // The server configuration struct.
 typedef struct ServerConfig {
@@ -23,6 +26,8 @@ typedef struct ServerConfig {
     int32_t port;
     // The maximum number of clients.
     int32_t client_limit;
+    // The maximum number of worker threads.
+    int32_t worker_limit;
     // The size of the receive buffer.
     int32_t buffer_size;
     // The middlewares to use.
@@ -34,6 +39,7 @@ typedef struct ServerConfig {
 typedef struct Server {
     int32_t              sockfd;
     struct ServerConfig* config;
+    struct ThreadPool*   pool;
 } Server;
 
 struct ServerConfig* server_config_create();

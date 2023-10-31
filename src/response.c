@@ -5,6 +5,7 @@ struct Response* response_create() {
     response->status = 200;
     response->headers = headers_create();
     response->body = NULL;
+    response->body_stream = NULL;
     return response;
 }
 
