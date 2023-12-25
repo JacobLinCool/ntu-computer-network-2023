@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Login</h1>
+            <a href="/"><i>NTU Computer Network Final Project</i></a>
+        </div>
+        <div class="content">
+            <p>
+                Login to the chatroom!
+            </p>
+
+            <form action="/login" method="post">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                </div>
+                <div class="input-group">
+                    <button type="submit">Login</button>
+                    <a href="/register">No account? Register now!</a>
+                </div>
+            </form>
+        </div>
+        <div class="footer">
+            <p>
+                &copy; 2023 - Jacob Lin
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const msg = new URLSearchParams(window.location.search).get("msg");
+        if (msg) {
+            alert(msg);
+        }
+    </script>
+
+</html>

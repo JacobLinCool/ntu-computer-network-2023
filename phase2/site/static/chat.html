@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chatroom</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Chatroom</h1>
+            <a href="/"><i>NTU Computer Network Final Project</i></a>
+        </div>
+        <div class="content">
+            <p>
+                Welcome to the chatroom!
+            </p>
+
+            <div>
+                <a href="/logout">Logout</a>
+            </div>
+
+            <form action="/chat" method="post">
+                <div class="input-group">
+                    <label for="message">Message</label>
+                    <input type="text" name="message" id="message" placeholder="Your Message" required autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <button type="submit">Post</button>
+                </div>
+            </form>
+
+            <div style="display: flex; flex-direction: column-reverse;">
+                ${chats}
+            </div>
+        </div>
+        <div class="footer">
+            <p>
+                &copy; 2023 - Jacob Lin
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function pull() {
+            fetch("/chat-status")
+                .then(res => res.status)
+                .then(status => {
+                    if (status === 304) {
+                        console.log("no update");
+                        pull();
+                    } else {
+                        console.log("updated");
+                        window.location.reload();
+                    }
+                });
+        }
+
+        pull();
+    </script>
+
+</html>
